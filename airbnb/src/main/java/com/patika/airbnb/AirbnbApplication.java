@@ -12,6 +12,7 @@ public class AirbnbApplication {
 
     public static void main(String[] args) {
         PropertyService propertyService = new PropertyService();
+        //add properties...
         Property evUla          =  new Property("Ev Ula", 5, 2, new BigDecimal("300000"), new BigDecimal("180"), HOME);
         Property evKusadası     =  new Property("Ev Kuşadası", 3, 1, new BigDecimal("300000"), new BigDecimal("180"), HOME);
         Property villaÇesme     =  new Property("Villa Çeşme", 3, 1, new BigDecimal("710000"), new BigDecimal("200"), VILLA);
@@ -26,16 +27,16 @@ public class AirbnbApplication {
         propertyService.save(yazlıkKas);
         propertyService.save(yazlıkAyvalık);
 
-        System.out.println("Evlerin Toplam Fiyatı: " + propertyService.getTotalPriceOfHomes());
-        System.out.println("Villaların Toplam Fiyatı: " + propertyService.getTotalPriceOfVillas());
-        System.out.println("Yazlıkların Toplam Fiyatı: " + propertyService.getTotalPriceOfSummerHouses());
-        System.out.println("Tüm Tipteki Evlerin Toplam Fiyatı: " + propertyService.getTotalPriceOfAllProperties());
+        System.out.println("Total Price of Houses: " + propertyService.getTotalPriceOfHomes());
+        System.out.println("Total Price of Villas: " + propertyService.getTotalPriceOfVillas());
+        System.out.println("Total price of Summer Houses: " + propertyService.getTotalPriceOfSummerHouses());
+        System.out.println("Total Price of Properties: " + propertyService.getTotalPriceOfAllProperties());
 
-        System.out.println("Evlerin Ortalama Metrekaresi: " + propertyService.getAverageSquareMetersOfHomes());
-        System.out.println("Villaların Ortalama Metrekaresi: " + propertyService.getAverageSquareMetersOfVillas());
-        System.out.println("Yazlıkların Ortalama Metrekaresi: " + propertyService.getAverageSquareMetersOfSummerHouses());
-        System.out.println("Tüm Tipteki Evlerin Ortalama Metrekaresi: " + propertyService.getAverageSquareMetersOfAllProperties());
+        System.out.println("Average square metres of houses: " + propertyService.getAverageSquareMetersOfHomes());
+        System.out.println("Average square metres of Villas: " + propertyService.getAverageSquareMetersOfVillas());
+        System.out.println("Average square metres of Summer Houses: " + propertyService.getAverageSquareMetersOfSummerHouses());
+        System.out.println("Average square metres of Properties: " + propertyService.getAverageSquareMetersOfAllProperties());
 
-        System.out.println("Oda ve Salon Sayısına Göre Filtrelenmiş Evler: " + propertyService.filterPropertiesByRoomsAndLivingRooms(3, 1));
+        System.out.println("Houses Filtered by Number of Rooms and Halls: " + propertyService.filterPropertiesByRoomsAndLivingRooms(3, 1));
     }
 }

@@ -20,6 +20,7 @@ public class PropertyService {
     public List<Property> getAll() {
         return propertyRepository.getProperties();
     }
+
     public BigDecimal getTotalPriceOfHomes() {
         return propertyRepository.getProperties().stream()
                 .filter(property -> property.getType() == HOME)

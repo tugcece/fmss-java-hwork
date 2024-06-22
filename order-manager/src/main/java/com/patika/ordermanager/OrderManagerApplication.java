@@ -3,6 +3,8 @@ package com.patika.ordermanager;
 import com.patika.ordermanager.model.Customer;
 import com.patika.ordermanager.model.Invoice;
 import com.patika.ordermanager.model.Order;
+import com.patika.ordermanager.repository.InvoiceRepository;
+import com.patika.ordermanager.repository.OrderRepository;
 import com.patika.ordermanager.service.CustomerService;
 import com.patika.ordermanager.service.InvoiceService;
 import com.patika.ordermanager.service.OrderService;
@@ -11,7 +13,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.time.LocalDate;
 
 
-@SpringBootApplication
 public class OrderManagerApplication {
 
     public static void main(String[] args) {
@@ -49,34 +50,34 @@ public class OrderManagerApplication {
         customerService.addInvoiceToCustomer("Alice", invoice2);
         customerService.addInvoiceToCustomer("Bob", invoice3);
 
-        System.out.println("Tüm müşteriler:");
+        System.out.println("All Customers:");
         customerService.getAllCustomers().forEach(c -> System.out.println(c.getName()));
 
-        System.out.println("İçerisinde 'C' harfi olan müşteriler:");
+        System.out.println("Customers with the letter 'C' in their name:");
         customerService.getCustomersContainingC().forEach(c -> System.out.println(c.getName()));
 
-        System.out.println("Haziran ayında kayıt olan müşterilerin faturalarının toplam tutarı:");
+        System.out.println("Total amount of invoices of customers who registered in June:");
         System.out.println(invoiceService.getTotalInvoiceAmountInJune());
 
-        System.out.println("Sistemdeki tüm faturalar:");
+        System.out.println("All invoices in the system:");
         invoiceService.getAll().forEach(i -> System.out.println(i.getAmount()));
 
-        System.out.println("Sistemdeki 1500TL üstündeki faturalar:");
+        System.out.println("Invoices over 1500TL in the system:");
         invoiceService.getInvoicesAbove1500().forEach(i -> System.out.println(i.getAmount()));
 
-        System.out.println("Sistemdeki 1500TL üstündeki faturaların ortalaması:");
+        System.out.println("Average of invoices over 1500TL in the system:");
         System.out.println(invoiceService.getAverageInvoiceAbove1500());
 
-        System.out.println("Sistemdeki 500TL altındaki faturalara sahip müşterilerin isimleri:");
+        System.out.println("Names of customers in the system with invoices under 500TL:");
         customerService.getCustomerNamesWithInvoicesBelow500().forEach(System.out::println);
 
-        System.out.println("Haziran ayının faturalarının ortalaması 750 altı olan firmaların sektörleri:");
+        System.out.println("Sectors of the companies with average invoices below 750 in June:");
         customerService.getSectorsWithJuneInvoicesBelow750().forEach(System.out::println);
 
-        System.out.println("Tüm siparişler:");
+        System.out.println("All orders:");
         orderService.getAllOrders().forEach(o -> System.out.println("Order ID: " + o.getOrderId() + ", Total Amount: " + o.getTotalAmount()));
 
-        System.out.println("1500TL üstündeki siparişler:");
+        System.out.println("Orders over 1500TL:");
         orderService.getOrdersAboveAmount(1500).forEach(o -> System.out.println("Order ID: " + o.getOrderId() + ", Total Amount: " + o.getTotalAmount()));
     }
 

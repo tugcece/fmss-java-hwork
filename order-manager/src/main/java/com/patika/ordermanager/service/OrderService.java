@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class OrderService {
     private final OrderRepository orderRepository = new OrderRepository();
 
-       public void save(Order order) {
+    public void save(Order order) {
       orderRepository.addOrder(order);
     };
 
